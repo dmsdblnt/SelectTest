@@ -42,7 +42,9 @@ export default class App extends Component<AppProps, AppState> {
           render={(o: IOption | null) => (
             <div
               className={
-                this.state.optionSelected?.id === o?.id ? "input-selected" : ""
+                o && this.state.optionSelected?.id === o.id
+                  ? "input-selected"
+                  : ""
               }
             >
               {o ? o.label : "Select an input"}
@@ -56,7 +58,9 @@ export default class App extends Component<AppProps, AppState> {
           render={(o: IName | null) => (
             <div
               className={
-                this.state.nameSelected?.id === o?.id ? "input-selected" : ""
+                o && this.state.nameSelected?.id === o.id
+                  ? "input-selected"
+                  : ""
               }
             >
               {o ? createName(o.firstName, o.lastName) : "Select an input"}
