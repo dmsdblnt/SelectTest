@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import SelectInput from "./SelectInput";
-import { IOption, IName } from "./types";
-import { createName } from "./functions";
-import { names, options } from "./data";
-import "./App.css";
+import { IOption, IName } from "../utils/types";
+import { createName } from "../utils/functions";
+import { names, options } from "../utils/data";
+import "../css/App.css";
 
 interface AppProps {}
 interface AppState {
