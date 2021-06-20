@@ -2,7 +2,7 @@ import React from "react";
 
 interface SelectInputProps<T> {
   options: Array<T>;
-  selected: string | null;
+  selected: T | null;
   handleChange: (object: T) => void;
   render: (o: T) => JSX.Element;
 }
@@ -29,7 +29,9 @@ export default class SelectInput<T> extends React.Component<
   render() {
     return (
       <div className="dropdown" onClick={this.handleClick}>
-        {this.props.selected || "Select an input"}
+        {this.props.selected
+          ? this.props.render(this.props.selected)
+          : "Select an input"}
         {this.props.options.map((o: T, index) => {
           return (
             <div

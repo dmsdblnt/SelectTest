@@ -7,10 +7,8 @@ import "../css/App.css";
 
 interface AppProps {}
 interface AppState {
-  optionSelected: string | null;
-  optionId: number;
-  nameSelected: string | null;
-  nameId: number;
+  optionSelected: IOption | null;
+  nameSelected: IName | null;
 }
 
 export default class App extends Component<AppProps, AppState> {
@@ -18,23 +16,19 @@ export default class App extends Component<AppProps, AppState> {
     super(props);
     this.state = {
       optionSelected: null,
-      optionId: -1,
       nameSelected: null,
-      nameId: -1,
     };
   }
 
   private handleChange = (object: IOption) => {
     this.setState({
-      optionSelected: object.label,
-      optionId: object.id,
+      optionSelected: object,
     });
   };
 
   private handleNameChange = (object: IName) => {
     this.setState({
-      nameSelected: createName(object.firstName, object.lastName),
-      nameId: object.id,
+      nameSelected: object,
     });
   };
 
@@ -48,7 +42,9 @@ export default class App extends Component<AppProps, AppState> {
           render={(o: IOption) => (
             <div
               key={o.id}
-              className={this.state.optionId === o.id ? "input-selected" : ""}
+              className={
+                this.state.optionSelected?.id === o.id ? "input-selected" : ""
+              }
             >
               {o.label}
             </div>
@@ -61,7 +57,9 @@ export default class App extends Component<AppProps, AppState> {
           render={(o: IName) => (
             <div
               key={o.id}
-              className={this.state.nameId === o.id ? "input-selected" : ""}
+              className={
+                this.state.nameSelected?.id === o.id ? "input-selected" : ""
+              }
             >
               {createName(o.firstName, o.lastName)}
             </div>
