@@ -4,7 +4,7 @@ interface SelectInputProps<T> {
   options: Array<T>;
   selected: T | null;
   handleChange: (object: T) => void;
-  render: (o: T) => JSX.Element;
+  render: (o: T | null) => JSX.Element;
 }
 
 interface SelectInputState {
@@ -29,9 +29,7 @@ export default class SelectInput<T> extends React.Component<
   render() {
     return (
       <div className="dropdown" onClick={this.handleClick}>
-        {this.props.selected
-          ? this.props.render(this.props.selected)
-          : "Select an input"}
+        {this.props.render(this.props.selected)}
         {this.props.options.map((o: T, index) => {
           return (
             <div

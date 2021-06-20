@@ -39,14 +39,13 @@ export default class App extends Component<AppProps, AppState> {
           options={options}
           selected={this.state.optionSelected}
           handleChange={this.handleChange}
-          render={(o: IOption) => (
+          render={(o: IOption | null) => (
             <div
-              key={o.id}
               className={
-                this.state.optionSelected?.id === o.id ? "input-selected" : ""
+                this.state.optionSelected?.id === o?.id ? "input-selected" : ""
               }
             >
-              {o.label}
+              {o ? o.label : "Select an input"}
             </div>
           )}
         />
@@ -54,14 +53,13 @@ export default class App extends Component<AppProps, AppState> {
           options={names}
           selected={this.state.nameSelected}
           handleChange={this.handleNameChange}
-          render={(o: IName) => (
+          render={(o: IName | null) => (
             <div
-              key={o.id}
               className={
-                this.state.nameSelected?.id === o.id ? "input-selected" : ""
+                this.state.nameSelected?.id === o?.id ? "input-selected" : ""
               }
             >
-              {createName(o.firstName, o.lastName)}
+              {o ? createName(o.firstName, o.lastName) : "Select an input"}
             </div>
           )}
         />
