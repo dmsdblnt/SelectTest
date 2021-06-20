@@ -34,6 +34,6 @@ p {
   display: none;
 }
 
-.dropdown .input-selected {
+.dropdown .input-visible .input-selected {
   background-color: lightblue;
 }
